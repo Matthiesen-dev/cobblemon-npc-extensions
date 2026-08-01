@@ -16,8 +16,16 @@ Introduces various Cobblemon NPC Molang extensions for use with other mods!
 
 The following mods have added Molang extensions for use with Cobblemon NPCs:
 
+- [Matthiesen Core](https://modrinth.com/mod/matthiesen-core)
+  - Text Parser Extensions (Player)
+  - Economy Extensions (Player)
 - [GriefDefender](https://docs.griefdefender.com/)
+  - NPC Extensions
+  - Player Extensions
+  - Server Extensions
+  - World Extensions
 - [LuckPerms](https://modrinth.com/mod/luckperms)
+  - Player Extensions
 
 ## Docs
 
