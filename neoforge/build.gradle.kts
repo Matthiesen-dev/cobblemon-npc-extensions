@@ -26,10 +26,8 @@ dependencies {
     minecraft(libs.minecraft.net)
     mappings(loom.officialMojangMappings())
     neoForge(libs.neoforge)
+    modImplementation(libs.bundles.neoforgeModImplementation) { isTransitive = false }
 
-    libs.bundles.neoforgeModImplementation.get().forEach { dependency ->
-        modImplementation(dependency.copy()) { isTransitive = false }
-    }
     forgeRuntimeLibrary(libs.kotlinforforge) {
         exclude("net.neoforged.fancymodloader", "loader")
     }

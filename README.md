@@ -1,12 +1,11 @@
-# template-cobblemon-sidemod
+# Cobblemon NPC Extensions
 
 <div>
   <img src="https://mods.matthiesen.dev/badges/matthiesenCore.svg" alt="Matthiesen Core">
   <img src="https://mods.matthiesen.dev/badges/cobblemon.svg" alt="Cobblemon">
 </div>
 
-Template for a Cobblemon side mod. This template includes the necessary setup for a mod that depends on the Matthiesen Core and Cobblemon, 
-but does not include any specific functionality. You can use this as a starting point for creating your own Cobblemon side mod.
+Introduces various Cobblemon NPC Molang extensions for use with other mods!
 
 ## Requirements
 
@@ -15,7 +14,7 @@ but does not include any specific functionality. You can use this as a starting 
 
 ## Docs
 
-Documentation for this mod can be found at [mods.matthiesen.dev](https://mods.matthiesen.dev/TODO/)
+Documentation for this mod can be found at [mods.matthiesen.dev](https://mods.matthiesen.dev/cobblemon-npc-extensions/)
 
 ## Version Compatibility
 
@@ -29,7 +28,7 @@ This mod uses [FastStats](https://faststats.dev) to collect anonymous usage stat
 how this mod is being used and improve it over time. You can learn more about the data collected and how it is used by visiting
 [FastStats: Information](https://faststats.dev/info).
 
-You can also view the data collected by this mod on the [FastStats: TODO](https://faststats.dev/project/TODO) page.
+You can also view the data collected by this mod on the [FastStats: Cobblemon NPC Extensions](https://faststats.dev/project/cobblemon-npc-extensions) page.
 
 To opt out of this data collection, set the `enabled` property to `false` in the `<game_directory>/config/matthiesen_core/metrics.properties` file.
 
