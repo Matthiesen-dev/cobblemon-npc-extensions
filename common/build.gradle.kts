@@ -14,6 +14,7 @@ dependencies {
     compileOnly(libs.bundles.commonCompileOnly)
     implementation(libs.bundles.commonImplementation)
     modImplementation(libs.bundles.commonModImplementation) { isTransitive = false }
+    modCompileOnly(libs.bundles.commonModCompileOnly)
     modApi(files("${rootProject.rootDir}/jars/molang-${property("molang_version")}.jar"))
 
     testImplementation(libs.junit.api)

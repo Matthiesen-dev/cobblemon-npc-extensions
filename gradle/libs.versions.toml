@@ -15,7 +15,12 @@ publish = "0.35.0"
 matthiesen_core = "1.0.0-beta.31"
 sponge-mixin = "0.8.5"
 
+griefdefender-api = "2.1.1-SNAPSHOT"
+
 luckperms = "5.4"
+
+adventure-key = "4.13.0"
+impactor-fabric = "5.3.5+1.21.1-Fabric-fabric,1.21.1"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
@@ -45,11 +50,17 @@ matthiesen-core-fabric = { group = "dev.matthiesen", name = "matthiesen-core-fab
 matthiesen-core-neoforge = { group = "dev.matthiesen", name = "matthiesen-core-neoforge", version.ref = "matthiesen_core" }
 sponge-mixin = { group = "org.spongepowered", name = "mixin", version.ref = "sponge-mixin" }
 
+griefdefender-api = { group = "com.griefdefender", name = "api", version.ref = "griefdefender-api" }
+
 luckperms-api = { group = "net.luckperms", name = "api", version.ref = "luckperms" }
 
+adventure-key = { group = "net.kyori", name = "adventure-key", version.ref = "adventure-key" }
+impactor-fabric = { group = "maven.modrinth", name = "impactor", version.ref = "impactor-fabric" }
+
 [bundles]
-commonCompileOnly = ["sponge-mixin", "luckperms-api"]
-commonImplementation = []
+commonCompileOnly = ["sponge-mixin", "luckperms-api", "griefdefender-api"]
+commonModCompileOnly = ["impactor-fabric"]
+commonImplementation = ["adventure-key"]
 commonModImplementation = ["cobblemon-common", "matthiesen-core-common"]
 
 fabricModImplementation = ["fabric-loader", "fabric-api", "fabric-language-kotlin"]
