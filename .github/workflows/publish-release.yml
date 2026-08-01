@@ -11,6 +11,7 @@ on:
 # The dependencies below correspond to:
 # - Cobblemon (MdwFAVRL)
 # - Matthiesen Core (sqEZOmQo)
+# - LuckPerms (Vebnzrzj) - Optional
 
 jobs:
   publish:
@@ -29,7 +30,8 @@ jobs:
       modrinth_dependencies: |-
         [
           {"project_id":"MdwFAVRL","dependency_type":"required"},
-          {"project_id":"sqEZOmQo","dependency_type":"required"}
+          {"project_id":"sqEZOmQo","dependency_type":"required"},
+          {"project_id":"Vebnzrzj","dependency_type":"optional"}
         ]
       discord_icon_url: "https://raw.githubusercontent.com/Matthiesen-dev/.github/refs/heads/main/logo-transparent.png"
     secrets:

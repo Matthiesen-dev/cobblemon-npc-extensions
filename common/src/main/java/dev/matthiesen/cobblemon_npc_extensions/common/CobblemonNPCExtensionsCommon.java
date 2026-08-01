@@ -1,5 +1,6 @@
 package dev.matthiesen.cobblemon_npc_extensions.common;
 
+import dev.matthiesen.cobblemon_npc_extensions.common.grief_defender.GriefDefenderCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.LuckPermsCompat;
 import dev.matthiesen.libs.faststats.Token;
 import dev.matthiesen.matthiesen_core.common.AbstractCommonMod;
@@ -22,6 +23,10 @@ public final class CobblemonNPCExtensionsCommon extends AbstractCommonMod {
 
     public void initialize() {
         super.initialize();
+
+        if (getCommonUtils().isModLoaded("griefdefender")) {
+            GriefDefenderCompat.init();
+        }
 
         if (getCommonUtils().isModLoaded("luckperms")) {
             LuckPermsCompat.init();
