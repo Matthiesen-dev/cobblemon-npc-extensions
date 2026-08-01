@@ -1,6 +1,6 @@
 package dev.matthiesen.cobblemon_npc_extensions.common;
 
-import dev.matthiesen.cobblemon_npc_extensions.common.grief_defender.GriefDefenderCompat;
+import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.GriefDefenderCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.LuckPermsCompat;
 import dev.matthiesen.libs.faststats.Token;
 import dev.matthiesen.matthiesen_core.common.AbstractCommonMod;

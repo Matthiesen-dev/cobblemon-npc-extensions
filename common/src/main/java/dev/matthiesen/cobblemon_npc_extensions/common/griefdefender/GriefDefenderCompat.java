@@ -1,4 +1,4 @@
-package dev.matthiesen.cobblemon_npc_extensions.common.grief_defender;
+package dev.matthiesen.cobblemon_npc_extensions.common.griefdefender;
 
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
 
