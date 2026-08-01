@@ -1,5 +1,6 @@
 package dev.matthiesen.cobblemon_npc_extensions.common;
 
+import dev.matthiesen.cobblemon_npc_extensions.common.economy.EconomyCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.ImpactorProvider;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.GriefDefenderCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.LuckPermsCompat;
@@ -26,6 +27,8 @@ public final class CobblemonNPCExtensionsCommon extends AbstractCommonMod {
 
     public void initialize() {
         super.initialize();
+
+        EconomyCompat.init();
 
         if (getCommonUtils().isModLoaded("griefdefender")) {
             GriefDefenderCompat.init();
