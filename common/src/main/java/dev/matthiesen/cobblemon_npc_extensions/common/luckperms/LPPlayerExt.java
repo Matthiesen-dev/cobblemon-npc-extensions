@@ -1,4 +1,4 @@
-package dev.matthiesen.cobblemon_npc_extensions.common.luckperms.player;
+package dev.matthiesen.cobblemon_npc_extensions.common.luckperms;
 
 import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.value.DoubleValue;
@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-public record LuckPermsPlayer(Player player) {
-    public String makeString(LuckPermsPlayer player) {
+public record LPPlayerExt(Player player) {
+    public String makeString(LPPlayerExt player) {
         return "{" + "\"playerUUID\": \"" + player.player().getUUID() + "\"" + "}";
     }
 
@@ -275,8 +275,8 @@ public record LuckPermsPlayer(Player player) {
         return map;
     }
 
-    public ObjectValue<LuckPermsPlayer> asMolangValue() {
-        ObjectValue<LuckPermsPlayer> value = new ObjectValue<>(this, this::makeString, d -> 1.0);
+    public ObjectValue<LPPlayerExt> asMolangValue() {
+        ObjectValue<LPPlayerExt> value = new ObjectValue<>(this, this::makeString, d -> 1.0);
         value.functions.putAll(playerFunctions());
         return value;
     }

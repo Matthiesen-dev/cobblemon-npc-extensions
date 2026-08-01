@@ -3,7 +3,6 @@ package dev.matthiesen.cobblemon_npc_extensions.common.luckperms;
 import com.bedrockk.molang.runtime.MoParams;
 import com.cobblemon.mod.common.api.molang.MoLangFunctions;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
-import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.player.LuckPermsPlayer;
 
 import java.util.HashMap;
 import java.util.function.Function;
@@ -34,7 +33,7 @@ public final class LuckPermsCompat {
             // q.player.luckperms.meta_settemp(<key string>, <value string>, <duration string>) -> 0
             // q.player.luckperms.meta_unsettemp(<key string>) -> 0
             // q.player.luckperms.meta_get(<key string>) -> string
-            map.put("luckperms", moParams -> new LuckPermsPlayer(player).asMolangValue());
+            map.put("luckperms", moParams -> new LPPlayerExt(player).asMolangValue());
 
             return map;
         });
