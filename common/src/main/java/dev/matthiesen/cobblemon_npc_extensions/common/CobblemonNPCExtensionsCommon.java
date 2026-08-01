@@ -1,5 +1,6 @@
 package dev.matthiesen.cobblemon_npc_extensions.common;
 
+import dev.matthiesen.cobblemon_npc_extensions.common.economy.impactor.ImpactorProvider;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.GriefDefenderCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.LuckPermsCompat;
 import dev.matthiesen.libs.faststats.Token;
@@ -33,5 +34,14 @@ public final class CobblemonNPCExtensionsCommon extends AbstractCommonMod {
         }
 
         createInfoLog("Initialized");
+    }
+
+    private ImpactorProvider ECO_PROVIDER_INSTANCE;
+
+    public ImpactorProvider getEcoProvider() {
+        if (ECO_PROVIDER_INSTANCE == null) {
+            ECO_PROVIDER_INSTANCE = new ImpactorProvider();
+        }
+        return ECO_PROVIDER_INSTANCE;
     }
 }
