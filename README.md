@@ -12,6 +12,13 @@ Introduces various Cobblemon NPC Molang extensions for use with other mods!
 - [Matthiesen Core](https://modrinth.com/mod/matthiesen-core)
 - [Cobblemon](https://modrinth.com/mod/cobblemon)
 
+## Supported Mods
+
+The following mods have added Molang extensions for use with Cobblemon NPCs:
+
+- [GriefDefender](https://docs.griefdefender.com/)
+- [LuckPerms](https://modrinth.com/mod/luckperms)
+
 ## Docs
 
 Documentation for this mod can be found at [mods.matthiesen.dev](https://mods.matthiesen.dev/cobblemon-npc-extensions/)

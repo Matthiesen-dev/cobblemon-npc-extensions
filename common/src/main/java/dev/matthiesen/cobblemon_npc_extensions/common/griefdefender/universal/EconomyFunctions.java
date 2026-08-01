@@ -7,7 +7,7 @@ import com.griefdefender.api.claim.ClaimType;
 import com.griefdefender.api.claim.ClaimTypes;
 import com.griefdefender.api.economy.PaymentType;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
-import dev.matthiesen.cobblemon_npc_extensions.common.economy.impactor.ImpactorProvider;
+import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.ImpactorProvider;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.data.GDLocation;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.data.GDUser;
 import net.minecraft.ChatFormatting;

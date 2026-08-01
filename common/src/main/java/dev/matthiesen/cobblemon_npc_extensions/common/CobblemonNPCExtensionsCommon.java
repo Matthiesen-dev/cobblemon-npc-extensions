@@ -1,6 +1,6 @@
 package dev.matthiesen.cobblemon_npc_extensions.common;
 
-import dev.matthiesen.cobblemon_npc_extensions.common.economy.impactor.ImpactorProvider;
+import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.ImpactorProvider;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.GriefDefenderCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.LuckPermsCompat;
 import dev.matthiesen.libs.faststats.Token;
@@ -12,6 +12,8 @@ public final class CobblemonNPCExtensionsCommon extends AbstractCommonMod {
     public static final String MOD_NAME = "Cobblemon NPC Extensions";
     public static @Token final String METRICS_TOKEN = "4487f4b5a9ffe7b2e70cf577c505c92f";
     public static final CobblemonNPCExtensionsCommon INSTANCE = new CobblemonNPCExtensionsCommon();
+
+    private ImpactorProvider GD_ECO_PROVIDER_INSTANCE;
 
     public CobblemonNPCExtensionsCommon() {
         super(MOD_ID, MOD_NAME);
@@ -36,12 +38,10 @@ public final class CobblemonNPCExtensionsCommon extends AbstractCommonMod {
         createInfoLog("Initialized");
     }
 
-    private ImpactorProvider ECO_PROVIDER_INSTANCE;
-
     public ImpactorProvider getEcoProvider() {
-        if (ECO_PROVIDER_INSTANCE == null) {
-            ECO_PROVIDER_INSTANCE = new ImpactorProvider();
+        if (GD_ECO_PROVIDER_INSTANCE == null) {
+            GD_ECO_PROVIDER_INSTANCE = new ImpactorProvider();
         }
-        return ECO_PROVIDER_INSTANCE;
+        return GD_ECO_PROVIDER_INSTANCE;
     }
 }

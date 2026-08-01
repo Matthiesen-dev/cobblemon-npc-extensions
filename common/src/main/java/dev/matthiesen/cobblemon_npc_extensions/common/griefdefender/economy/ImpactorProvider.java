@@ -1,6 +1,5 @@
-package dev.matthiesen.cobblemon_npc_extensions.common.economy.impactor;
+package dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy;
 
-import com.griefdefender.api.claim.Claim;
 import net.impactdev.impactor.api.Impactor;
 import net.impactdev.impactor.api.economy.EconomyService;
 import net.impactdev.impactor.api.economy.accounts.Account;
@@ -43,10 +42,10 @@ public final class ImpactorProvider {
     }
 
     public double getBalance(Player player) {
-        return this.getBalance(player.getUUID(), true);
+        return this.getBalance(player.getUUID());
     }
 
-    public double getBalance(UUID uuid, boolean isPlayer) {
+    public double getBalance(UUID uuid) {
         if (this.getApi() == null) {
             return 0.0F;
         } else {
@@ -57,10 +56,10 @@ public final class ImpactorProvider {
     }
 
     public boolean depositPlayer(Player player, double amount) {
-        return this.depositPlayer(player.getUUID(), amount, true);
+        return this.depositPlayer(player.getUUID(), amount);
     }
 
-    public boolean depositPlayer(UUID uuid, double amount, boolean isPlayer) {
+    public boolean depositPlayer(UUID uuid, double amount) {
         if (this.getApi() == null) {
             return false;
         } else {
@@ -72,58 +71,16 @@ public final class ImpactorProvider {
     }
 
     public void withdrawFunds(Player player, double funds) {
-        this.withdrawFunds(player.getUUID(), funds, true);
+        this.withdrawFunds(player.getUUID(), funds);
     }
 
-    public boolean withdrawFunds(UUID uuid, double funds, boolean isPlayer) {
-        double balance = this.getBalance(uuid, isPlayer);
-        if (funds < (double)0.0F) {
-            return false;
-        } else if (balance < funds) {
-            return false;
-        } else {
+    public void withdrawFunds(UUID uuid, double funds) {
+        double balance = this.getBalance(uuid);
+        if (!(funds < (double)0.0F) && !(balance < funds)) {
             Currency currency = this.vaultApi.currencies().primary();
             Account account = this.vaultApi.account(currency, uuid).join();
             EconomyTransaction transaction = account.withdraw(BigDecimal.valueOf(funds));
-            return transaction.successful();
+            transaction.successful();
         }
     }
-
-    public boolean hasBankSupport() {
-        return true;
-    }
-
-    public boolean hasBankAccount(UUID bankUniqueId) {
-        return true;
-    }
-
-    public boolean bankWithdraw(UUID uuid, double amount) {
-        return this.withdrawFunds(uuid, amount, false);
-    }
-
-    public double bankBalance(UUID uuid) {
-        return this.getBalance(uuid, false);
-    }
-
-    public boolean bankDeposit(UUID uuid, double depositAmount) {
-        return this.depositPlayer(uuid, depositAmount, false);
-    }
-
-    public boolean withdrawTax(Claim claim, Player player, double taxOwed) {
-        return false;
-    }
-
-    public boolean createAccount(UUID uuid) {
-        try {
-            this.vaultApi.account(uuid).get();
-            return true;
-        } catch (Throwable var3) {
-            return false;
-        }
-    }
-
-    public void deleteBank(UUID uuid) {
-        this.vaultApi.deleteAccount(uuid);
-    }
-
 }
