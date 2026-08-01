@@ -18,7 +18,11 @@ The following mods have added Molang extensions for use with Cobblemon NPCs:
 
 - [Matthiesen Core](https://modrinth.com/mod/matthiesen-core)
   - Text Parser Extensions (Player)
+    - [Adventure MiniMessage](https://modrinth.com/mod/adventure-platform-mod) (via Matthiesen Core) 
+    - [Embers Text API](https://modrinth.com/mod/embers-text-api) (via Matthiesen Core)
   - Economy Extensions (Player)
+    - [Impactor](https://modrinth.com/mod/impactor) (via Matthiesen Core)
+    - Item based Economy (via Matthiesen Core)
 - [GriefDefender](https://docs.griefdefender.com/)
   - NPC Extensions
   - Player Extensions
