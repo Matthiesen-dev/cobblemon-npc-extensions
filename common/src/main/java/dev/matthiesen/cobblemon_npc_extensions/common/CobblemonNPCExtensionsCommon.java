@@ -1,5 +1,6 @@
 package dev.matthiesen.cobblemon_npc_extensions.common;
 
+import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.LuckPermsCompat;
 import dev.matthiesen.libs.faststats.Token;
 import dev.matthiesen.matthiesen_core.common.AbstractCommonMod;
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +22,10 @@ public final class CobblemonNPCExtensionsCommon extends AbstractCommonMod {
 
     public void initialize() {
         super.initialize();
+
+        if (getCommonUtils().isModLoaded("luckperms")) {
+            LuckPermsCompat.init();
+        }
 
         createInfoLog("Initialized");
     }
