@@ -10,10 +10,10 @@ import net.minecraft.world.entity.player.Player;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public final class ImpactorProvider {
+public final class GDImpactorProvider {
     private EconomyService vaultApi;
 
-    public ImpactorProvider() {
+    public GDImpactorProvider() {
         this.initEconomy();
     }
 

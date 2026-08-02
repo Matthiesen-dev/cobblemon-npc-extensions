@@ -7,7 +7,7 @@ import com.griefdefender.api.claim.ClaimType;
 import com.griefdefender.api.claim.ClaimTypes;
 import com.griefdefender.api.economy.PaymentType;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
-import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.ImpactorProvider;
+import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.GDImpactorProvider;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.data.GDLocation;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.data.GDUser;
 import net.minecraft.ChatFormatting;
@@ -136,7 +136,7 @@ public final class EconomyFunctions {
                 return 0;
             }
 
-            ImpactorProvider ecoProvider = CobblemonNPCExtensionsCommon.INSTANCE.getEcoProvider();
+            GDImpactorProvider ecoProvider = CobblemonNPCExtensionsCommon.INSTANCE.getEcoProvider();
 
             if (isFalse(ecoProvider.hasAccount(player), player, Component.literal(economyAccountError()))) {
                 return 0;
