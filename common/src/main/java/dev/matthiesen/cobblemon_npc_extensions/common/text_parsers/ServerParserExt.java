@@ -17,62 +17,38 @@ public record ServerParserExt(MinecraftServer server) {
         return "{" + "\"serverPlatform\": \"" + server.server().getServerModName() + "\"" + "}";
     }
 
+    public Function<MoParams, Object> parseAndSend(BuiltInTextParsers parsers) {
+        return moParams -> {
+            String message = moParams.getString(0);
+
+            boolean isAvailable = CobblemonNPCExtensionsCommon.INSTANCE.getTextParserManager().isTextParserRegistered(parsers);
+            if (!isAvailable) {
+                CobblemonNPCExtensionsCommon.INSTANCE.createErrorLog("Failed to parse message for server " + server.getServerModName() + " because the " + parsers.name() + " text parser is not available");
+                return DoubleValue.ZERO;
+            }
+
+            try {
+                var parser = CobblemonNPCExtensionsCommon.INSTANCE.getTextParserManager().getTextParser(parsers);
+                ServerMessagingUtil.sendToAllAndConsole(server, parser.parse(message));
+                return DoubleValue.ONE;
+            } catch (Exception e) {
+                CobblemonNPCExtensionsCommon.INSTANCE.createErrorLog("Failed to parse message for server " + server.getServerModName() + " because of an error: " + e.getMessage());
+                return DoubleValue.ZERO;
+            }
+        };
+    }
+
     public Map<String,? extends Function<MoParams, Object>> serverFunctions() {
         HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
 
         // q.player.text_parser.vanilla(<string message>) -> 1 for success, 0 for failure
-        map.put("vanilla", moParams -> {
-            String message = moParams.getString(0);
-
-            try {
-                var parser = CobblemonNPCExtensionsCommon.INSTANCE.getTextParserManager().getTextParser(BuiltInTextParsers.VANILLA);
-                ServerMessagingUtil.sendToAllAndConsole(server, parser.parse(message));
-                return DoubleValue.ONE;
-            } catch (Exception e) {
-                CobblemonNPCExtensionsCommon.INSTANCE.createErrorLog("Failed to parse message for server " + server.getServerModName() + " because of an error: " + e.getMessage());
-                return DoubleValue.ZERO;
-            }
-        });
+        map.put("vanilla", parseAndSend(BuiltInTextParsers.VANILLA));
 
         // q.player.text_parser.adventure(<string message>) -> 1 for success, 0 for failure
-        map.put("adventure", moParams -> {
-            String message = moParams.getString(0);
-
-            boolean isAvailable = CobblemonNPCExtensionsCommon.INSTANCE.getTextParserManager().isTextParserRegistered(BuiltInTextParsers.ADVENTURE);
-            if (!isAvailable) {
-                CobblemonNPCExtensionsCommon.INSTANCE.createErrorLog("Failed to parse message for server " + server.getServerModName() + " because the adventure text parser is not available");
-                return DoubleValue.ZERO;
-            }
-
-            try {
-                var parser = CobblemonNPCExtensionsCommon.INSTANCE.getTextParserManager().getTextParser(BuiltInTextParsers.ADVENTURE);
-                ServerMessagingUtil.sendToAllAndConsole(server, parser.parse(message));
-                return DoubleValue.ONE;
-            } catch (Exception e) {
-                CobblemonNPCExtensionsCommon.INSTANCE.createErrorLog("Failed to parse message for server " + server.getServerModName() + " because of an error: " + e.getMessage());
-                return DoubleValue.ZERO;
-            }
-        });
+        map.put("adventure", parseAndSend(BuiltInTextParsers.ADVENTURE));
 
         // q.player.text_parser.emberstextapi(<string message>) -> 1 for success, 0 for failure
-        map.put("emberstextapi", moParams -> {
-            String message = moParams.getString(0);
-
-            boolean isAvailable = CobblemonNPCExtensionsCommon.INSTANCE.getTextParserManager().isTextParserRegistered(BuiltInTextParsers.EMBERS);
-            if (!isAvailable) {
-                CobblemonNPCExtensionsCommon.INSTANCE.createErrorLog("Failed to parse message for server " + server.getServerModName() + " because the Ember's Text API text parser is not available");
-                return DoubleValue.ZERO;
-            }
-
-            try {
-                var parser = CobblemonNPCExtensionsCommon.INSTANCE.getTextParserManager().getTextParser(BuiltInTextParsers.EMBERS);
-                ServerMessagingUtil.sendToAllAndConsole(server, parser.parse(message));
-                return DoubleValue.ONE;
-            } catch (Exception e) {
-                CobblemonNPCExtensionsCommon.INSTANCE.createErrorLog("Failed to parse message for server " + server.getServerModName() + " because of an error: " + e.getMessage());
-                return DoubleValue.ZERO;
-            }
-        });
+        map.put("emberstextapi", parseAndSend(BuiltInTextParsers.EMBERS));
 
         return map;
     }
