@@ -12,15 +12,13 @@ kotlin-for-forge = "5.10.0"
 cobblemon = "1.7.3+1.21.1"
 junit = "5.1.0"
 publish = "0.35.0"
-matthiesen_core = "1.0.0-beta.31"
+matthiesen_core = "1.0.0-beta.38"
 sponge-mixin = "0.8.5"
-
 griefdefender-api = "2.1.1-SNAPSHOT"
-
 luckperms = "5.4"
-
 adventure-key = "4.13.0"
 impactor-fabric = "5.3.5+1.21.1-Fabric-fabric,1.21.1"
+forge-config-api-port = "21.1.6"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
@@ -49,21 +47,21 @@ matthiesen-core-common = { group = "dev.matthiesen", name = "matthiesen-core-com
 matthiesen-core-fabric = { group = "dev.matthiesen", name = "matthiesen-core-fabric", version.ref = "matthiesen_core" }
 matthiesen-core-neoforge = { group = "dev.matthiesen", name = "matthiesen-core-neoforge", version.ref = "matthiesen_core" }
 sponge-mixin = { group = "org.spongepowered", name = "mixin", version.ref = "sponge-mixin" }
-
 griefdefender-api = { group = "com.griefdefender", name = "api", version.ref = "griefdefender-api" }
-
 luckperms-api = { group = "net.luckperms", name = "api", version.ref = "luckperms" }
-
 adventure-key = { group = "net.kyori", name = "adventure-key", version.ref = "adventure-key" }
 impactor-fabric = { group = "maven.modrinth", name = "impactor", version.ref = "impactor-fabric" }
+forge-config-api-port-common = { group = "fuzs.forgeconfigapiport", name = "forgeconfigapiport-common-neoforgeapi", version.ref = "forge-config-api-port" }
+forge-config-api-port-fabric = { group = "fuzs.forgeconfigapiport", name = "forgeconfigapiport-fabric", version.ref = "forge-config-api-port" }
 
 [bundles]
-commonCompileOnly = ["sponge-mixin", "luckperms-api", "griefdefender-api"]
+commonCompileOnly = ["sponge-mixin", "luckperms-api", "griefdefender-api", "forge-config-api-port-common"]
 commonModCompileOnly = ["impactor-fabric"]
 commonImplementation = ["adventure-key"]
 commonModImplementation = ["cobblemon-common", "matthiesen-core-common"]
 
 fabricModImplementation = ["fabric-loader", "fabric-api", "fabric-language-kotlin"]
 fabricModImplementationNoTransitive = ["cobblemon-fabric", "matthiesen-core-fabric"]
+fabricModRuntimeOnly = ["forge-config-api-port-fabric"]
 
 neoforgeModImplementation = ["cobblemon-neoforge", "matthiesen-core-neoforge"]
