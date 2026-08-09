@@ -33,7 +33,7 @@ jobs:
           {"project_id":"sqEZOmQo","dependency_type":"required"},
           {"project_id":"Vebnzrzj","dependency_type":"optional"}
         ]
-      discord_icon_url: "https://raw.githubusercontent.com/Matthiesen-dev/.github/refs/heads/main/logo-transparent.png"
+      discord_icon_url: "https://raw.githubusercontent.com/Matthiesen-dev/.github/refs/heads/main/mod-logos/cobblemon-npc-extensions.png"
     secrets:
       git_token: ${{ secrets.GITHUB_TOKEN }}
       MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
