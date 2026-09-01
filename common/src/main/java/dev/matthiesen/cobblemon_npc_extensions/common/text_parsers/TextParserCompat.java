@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public final class TextParserCompat {
     public static void init() {
-        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("Text parser compatibility is enabled, initializing text parser compatibility");
+        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("Text parser platform detected, initializing text parser compatibility");
 
         MoLangFunctions.INSTANCE.getPlayerFunctions().add(player -> {
             HashMap<String, Function<MoParams, Object>> map = new HashMap<>();

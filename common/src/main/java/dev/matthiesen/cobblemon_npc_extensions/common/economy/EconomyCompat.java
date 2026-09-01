@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public final class EconomyCompat {
     public static void init() {
-        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("Economy compatibility is enabled, initializing economy compatibility");
+        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("Economy platform detected, initializing economy compatibility");
 
         MoLangFunctions.INSTANCE.getPlayerFunctions().add(player -> {
             HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
