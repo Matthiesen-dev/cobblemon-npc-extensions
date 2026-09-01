@@ -6,7 +6,7 @@ import com.griefdefender.api.claim.ClaimResult;
 import com.griefdefender.api.claim.ClaimType;
 import com.griefdefender.api.claim.ClaimTypes;
 import com.griefdefender.api.economy.PaymentType;
-import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
+import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.GriefDefenderCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.GDImpactorProvider;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.data.GDLocation;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.data.GDUser;
@@ -18,6 +18,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 import java.util.function.Function;
 
+@SuppressWarnings("unused")
 public final class EconomyFunctions {
     public static String claimNotFound(String claimUUIDString) {
         return "Claim with UUID " + claimUUIDString + " not found. Please contact an administrator.";
@@ -136,7 +137,7 @@ public final class EconomyFunctions {
                 return 0;
             }
 
-            GDImpactorProvider ecoProvider = CobblemonNPCExtensionsCommon.INSTANCE.getEcoProvider();
+            GDImpactorProvider ecoProvider = GriefDefenderCompat.getEcoProvider();
 
             if (isFalse(ecoProvider.hasAccount(player), player, Component.literal(economyAccountError()))) {
                 return 0;
@@ -163,9 +164,7 @@ public final class EconomyFunctions {
 
             ClaimResult result = gdClaim.transferOwner(player.getUUID());
 
-            if (isFalse(result.successful(), player, Component.literal(failedToTransfer("claim ownership")), () -> {
-                gdClaim.getData().setType(originalType);
-            })) {
+            if (isFalse(result.successful(), player, Component.literal(failedToTransfer("claim ownership")), () -> gdClaim.getData().setType(originalType))) {
                 return 0;
             }
 

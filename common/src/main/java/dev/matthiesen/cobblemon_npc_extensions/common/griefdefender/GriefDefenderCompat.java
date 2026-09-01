@@ -3,13 +3,23 @@ package dev.matthiesen.cobblemon_npc_extensions.common.griefdefender;
 import com.bedrockk.molang.runtime.MoParams;
 import com.cobblemon.mod.common.api.molang.MoLangFunctions;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
+import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.GDImpactorProvider;
 
 import java.util.HashMap;
 import java.util.function.Function;
 
 public final class GriefDefenderCompat {
+    private static volatile GDImpactorProvider GD_ECO_PROVIDER_INSTANCE;
+
+    public static GDImpactorProvider getEcoProvider() {
+        if (GD_ECO_PROVIDER_INSTANCE == null) {
+            GD_ECO_PROVIDER_INSTANCE = new GDImpactorProvider();
+        }
+        return GD_ECO_PROVIDER_INSTANCE;
+    }
+
     public static void init() {
-        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("GriefDefender is loaded, initializing GriefDefender compatibility");
+        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("GriefDefender detected, initializing GriefDefender compatibility");
 
         MoLangFunctions.INSTANCE.getNpcFunctions().add(npcEntity -> {
            HashMap<String, Function<MoParams, Object>> map = new HashMap<>();

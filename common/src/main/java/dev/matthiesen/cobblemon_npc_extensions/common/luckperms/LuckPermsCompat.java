@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public final class LuckPermsCompat {
     public static void init() {
-        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("LuckPerms is loaded, initializing LuckPerms compatibility");
+        CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("LuckPerms detected, initializing LuckPerms compatibility");
 
         MoLangFunctions.INSTANCE.getPlayerFunctions().add(player -> {
             HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
