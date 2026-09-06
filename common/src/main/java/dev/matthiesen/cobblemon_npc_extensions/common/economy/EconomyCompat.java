@@ -1,18 +1,19 @@
 package dev.matthiesen.cobblemon_npc_extensions.common.economy;
 
 import com.bedrockk.molang.runtime.MoParams;
-import com.cobblemon.mod.common.api.molang.MoLangFunctions;
+import com.cobblemon.mod.common.api.molang.function.PlayerMoLangFunctions;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
+import kotlin.jvm.functions.Function1;
 
 import java.util.HashMap;
-import java.util.function.Function;
+import java.util.Map;
 
 public final class EconomyCompat {
     public static void init() {
         CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("Economy platform detected, initializing economy compatibility");
 
-        MoLangFunctions.INSTANCE.getPlayerFunctions().add(player -> {
-            HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
+        PlayerMoLangFunctions.INSTANCE.getCustom().add(player -> {
+            Map<String, Function1<MoParams, Object>> map = new HashMap<>();
 
             // q.player.economy() -> { "playerUUID": "string" }
             // q.player.economy.get_balance(<string providerID>, <string currency>) -> double

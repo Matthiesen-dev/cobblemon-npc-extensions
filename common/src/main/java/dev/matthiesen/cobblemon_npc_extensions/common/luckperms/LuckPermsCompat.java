@@ -1,18 +1,19 @@
 package dev.matthiesen.cobblemon_npc_extensions.common.luckperms;
 
 import com.bedrockk.molang.runtime.MoParams;
-import com.cobblemon.mod.common.api.molang.MoLangFunctions;
+import com.cobblemon.mod.common.api.molang.function.PlayerMoLangFunctions;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
+import kotlin.jvm.functions.Function1;
 
 import java.util.HashMap;
-import java.util.function.Function;
+import java.util.Map;
 
 public final class LuckPermsCompat {
     public static void init() {
         CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("LuckPerms detected, initializing LuckPerms compatibility");
 
-        MoLangFunctions.INSTANCE.getPlayerFunctions().add(player -> {
-            HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
+        PlayerMoLangFunctions.INSTANCE.getCustom().add(player -> {
+            Map<String, Function1<MoParams, Object>> map = new HashMap<>();
 
             // q.player.luckperms() -> { playerUUID: "string" }
             // q.player.luckperms.promote(<track string>, <dont-add-to-first int-as-boolean>) -> 0
