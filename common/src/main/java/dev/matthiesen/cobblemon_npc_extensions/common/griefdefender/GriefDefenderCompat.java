@@ -1,12 +1,16 @@
 package dev.matthiesen.cobblemon_npc_extensions.common.griefdefender;
 
 import com.bedrockk.molang.runtime.MoParams;
-import com.cobblemon.mod.common.api.molang.MoLangFunctions;
+import com.cobblemon.mod.common.api.molang.function.NPCMoLangFunctions;
+import com.cobblemon.mod.common.api.molang.function.PlayerMoLangFunctions;
+import com.cobblemon.mod.common.api.molang.function.ServerMoLangFunctions;
+import com.cobblemon.mod.common.api.molang.function.WorldMoLangFunctions;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.economy.GDImpactorProvider;
+import kotlin.jvm.functions.Function1;
 
 import java.util.HashMap;
-import java.util.function.Function;
+import java.util.Map;
 
 public final class GriefDefenderCompat {
     private static volatile GDImpactorProvider GD_ECO_PROVIDER_INSTANCE;
@@ -21,8 +25,8 @@ public final class GriefDefenderCompat {
     public static void init() {
         CobblemonNPCExtensionsCommon.INSTANCE.createInfoLog("GriefDefender detected, initializing GriefDefender compatibility");
 
-        MoLangFunctions.INSTANCE.getNpcFunctions().add(npcEntity -> {
-           HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
+        NPCMoLangFunctions.INSTANCE.getCustom().add(npcEntity -> {
+            Map<String, Function1<MoParams, Object>> map = new HashMap<>();
 
             // q.npc.griefdefender() -> { "npcUUID": "string" }
             // q.npc.griefdefender.economy_enabled() returns 1 for true, or 0
@@ -47,11 +51,11 @@ public final class GriefDefenderCompat {
             // { "uuid": "string", "displayName": "string", "ownerUUID": "string", "ownerName": "string", "spawnPos": "string", "taxPastDueDate": "string", "taxBalance": double }
             map.put("griefdefender", moParams -> new GDNpcExt(npcEntity).asMolangValue());
 
-           return map;
+            return map;
         });
 
-        MoLangFunctions.INSTANCE.getPlayerFunctions().add(player -> {
-            HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
+        PlayerMoLangFunctions.INSTANCE.getCustom().add(player -> {
+            Map<String, Function1<MoParams, Object>> map = new HashMap<>();
 
             // q.player.griefdefender() -> { "playerUUID": "string" }
             // q.player.griefdefender.economy_enabled() returns 1 for true, or 0
@@ -80,8 +84,8 @@ public final class GriefDefenderCompat {
             return map;
         });
 
-        MoLangFunctions.INSTANCE.getServerFunctions().add(server -> {
-            HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
+        ServerMoLangFunctions.INSTANCE.getCustom().add(server -> {
+            Map<String, Function1<MoParams, Object>> map = new HashMap<>();
 
             // q.server.griefdefender() -> { "serverPlatform": "string" }
             // q.server.griefdefender.economy_enabled() returns 1 for true, or 0
@@ -92,8 +96,8 @@ public final class GriefDefenderCompat {
             return map;
         });
 
-        MoLangFunctions.INSTANCE.getWorldFunctions().add(levelHolder -> {
-            HashMap<String, Function<MoParams, Object>> map = new HashMap<>();
+        WorldMoLangFunctions.INSTANCE.getCustom().add(levelHolder -> {
+            Map<String, Function1<MoParams, Object>> map = new HashMap<>();
 
             // q.world.griefdefender() -> { "location": "string" }
             // q.world.griefdefender.economy_enabled() returns 1 for true, or 0
