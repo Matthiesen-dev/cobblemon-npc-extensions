@@ -54,7 +54,7 @@ adventure-key = { group = "net.kyori", name = "adventure-key", version.ref = "ad
 impactor-fabric = { group = "maven.modrinth", name = "impactor", version.ref = "impactor-fabric" }
 forge-config-api-port-common = { group = "fuzs.forgeconfigapiport", name = "forgeconfigapiport-common-neoforgeapi", version.ref = "forge-config-api-port" }
 forge-config-api-port-fabric = { group = "fuzs.forgeconfigapiport", name = "forgeconfigapiport-fabric", version.ref = "forge-config-api-port" }
-molang = { group = "com.cobblemon.bedrockk", name = "molang", version.ref = "molang" }
+molang = { group = "com.bedrockk", name = "molang", version.ref = "molang" }
 
 [bundles]
 commonCompileOnly = ["sponge-mixin", "luckperms-api", "griefdefender-api", "forge-config-api-port-common"]
