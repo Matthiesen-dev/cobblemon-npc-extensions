@@ -12,6 +12,7 @@ dependencies {
     minecraft(libs.minecraft)
     mappings(loom.officialMojangMappings())
     compileOnly(libs.bundles.commonCompileOnly)
+    compileOnly(files(rootProject.file("jars/griefdefender-api-2.1.1.jar")))
     implementation(libs.bundles.commonImplementation)
     modImplementation(libs.bundles.commonModImplementation) { isTransitive = false }
     modCompileOnly(libs.bundles.commonModCompileOnly)
