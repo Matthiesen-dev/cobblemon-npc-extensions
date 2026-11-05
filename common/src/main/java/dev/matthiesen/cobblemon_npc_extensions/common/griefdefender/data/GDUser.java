@@ -5,7 +5,7 @@ import com.griefdefender.api.claim.Claim;
 import com.griefdefender.api.data.PlayerData;
 import com.mojang.authlib.GameProfile;
 import dev.matthiesen.cobblemon_npc_extensions.common.CobblemonNPCExtensionsCommon;
-import dev.matthiesen.matthiesen_core.common.core.data.fakeplayer.FakePlayerFactory;
+import dev.matthiesen.matthiesen_core.common.api.data.FakePlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -117,7 +117,7 @@ public final class GDUser implements User {
                             if (level == null) {
                                 return null;
                             }
-                            return FakePlayerFactory.get(level, gameProfile);
+                            return FakePlayer.Factory.get(level, gameProfile);
                         }
                     }
                 }
