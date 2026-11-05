@@ -4,7 +4,7 @@ import dev.matthiesen.cobblemon_npc_extensions.common.economy.EconomyCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.griefdefender.GriefDefenderCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.luckperms.LuckPermsCompat;
 import dev.matthiesen.cobblemon_npc_extensions.common.text_parsers.TextParserCompat;
-import dev.matthiesen.libs.faststats.Token;
+import dev.faststats.Token;
 import dev.matthiesen.matthiesen_core.common.AbstractCommonMod;
 import org.jetbrains.annotations.NotNull;
 
